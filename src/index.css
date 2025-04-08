@@ -30,10 +30,28 @@ body {
 }
 
 @layer utilities {
+    .hero{
+        @apply ml-20
+    }
     .hero-heading {
-        @apply uppercase font-general font-black text-lg sm:right-10 sm:text-xl md:text-2xl lg:text-[2rem];
+        @apply uppercase font-general font-black opacity-75;
       }
-
+    .hero-category{
+        @apply mt-20  text-2xl font-extrabold text-black-100;
+    }
+    .search {
+        @apply mt-5  border-black-75 bg-white h-10 w-[25%];
+    }
+    .hero-heading-big {
+        @apply uppercase mt-20 font-general font-black text-2xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[3rem];
+      }
+    .hero-pagination{
+        @apply mt-40
+    }
+    .imgCard{
+        @apply  mt-20 w-[100%]
+    }
+    
 }
 /* 
 @layer utilities {
