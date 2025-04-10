@@ -1,6 +1,6 @@
 import React from "react";
 
-const ClothImgCard = ({ path, title, description }) => {
+const ClothImgCard = ({ path, title, description, price }) => {
   return (
     <div class="gap-2  ">
       <div>
@@ -8,7 +8,10 @@ const ClothImgCard = ({ path, title, description }) => {
       </div>
       <div>
         <p className="text-gray-500 ">{description}</p>
-        <h3 className="text-lg font-bold">{title}</h3>
+        <div className="flex justify-between">
+          <h3 className="text-lg font-bold">{title}</h3>
+          <h3>{price}</h3>
+        </div>
       </div>
     </div>
   );

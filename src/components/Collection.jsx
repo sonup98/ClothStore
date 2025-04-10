@@ -27,19 +27,22 @@ const Collection = () => {
 
         <div className="flex justify-between space-x-3">
           <ClothImgCard
-            path={getImgSrc(3)}
-            title="V-Neck T-Shirt"
-            description="Embroidered Seersucker Shirt"
+            path={getImgSrc(7)}
+            title="V-Neck T-Cotton T Shirt"
+            description="Basic Heavy Weight T-shirt"
+            price="$199"
           />
           <ClothImgCard
-            path={getImgSrc(4)}
-            title="V-Neck T-Shirt"
-            description="Embroidered Seersucker Shirt"
+            path={getImgSrc(8)}
+            title="Cotton  jeans "
+            description="Soft Wash straight Fit Jeans"
+            price="$399"
           />
           <ClothImgCard
-            path={getImgSrc(5)}
-            title="V-Neck T-Shirt"
-            description="Embroidered Seersucker Shirt"
+            path={getImgSrc(9)}
+            title="Cotton T Shirt"
+            description="Basic Heavy Weight T-shirt"
+            price="$199"
           />
         </div>
       </div>

@@ -1,3 +1,4 @@
+import About from "./components/About";
 import Collection from "./components/Collection";
 import Features from "./components/Features";
 import Hero from "./components/Hero";
@@ -13,6 +14,7 @@ const App = () => {
         <Hero />
         <Features />
         <Collection />
+        <About />
       </main>
     </div>
   );
