@@ -1,3 +1,4 @@
+import Collection from "./components/Collection";
 import Features from "./components/Features";
 import Hero from "./components/Hero";
 import NavBar from "./components/NavBar";
@@ -11,6 +12,7 @@ const App = () => {
         <SideBarMenu />
         <Hero />
         <Features />
+        <Collection />
       </main>
     </div>
   );
