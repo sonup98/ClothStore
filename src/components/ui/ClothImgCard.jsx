@@ -1,8 +1,8 @@
 import React from "react";
 
-const ClothImgCard = ({ path, title, description, price }) => {
+const ClothImgCard = ({ path, title, description, price, imageClass }) => {
   return (
-    <div class="gap-2  ">
+    <div className={`gap-2 ${imageClass}`}>
       <div>
         <img src={path} class=" h-[350px] w-[366] object-cover" />
       </div>
