@@ -4,7 +4,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 
-// Register
 router.post("/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -23,7 +22,6 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// Login
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -40,10 +38,21 @@ router.post("/login", async (req, res) => {
       { expiresIn: "2d" }
     );
 
-    res.json({ token });
+    res.json({
+      token,
+      user: {
+        id: user._id,
+        isAdmin: user.isAdmin,
+      },
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
+});
+router.post("/logout", async (req, res) => {
+  // e.g. remove refresh token from DB or add JWT to a blacklist
+  res.clearCookie("refreshToken");
+  res.json({ msg: "Logged out" });
 });
 
 module.exports = router;
