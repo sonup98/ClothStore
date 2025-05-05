@@ -38,14 +38,42 @@ router.get("/", async (req, res) => {
     res.status(200).json({ success: true, orders });
   } catch (err) {
     console.error("Error fetching orders:", err);
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Failed to fetch orders",
-        error: err.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch orders",
+      error: err.message,
+    });
   }
 });
+router.get("/:id", async (req, res) => {
+  try {
+    // 1. Get userId correctly from req.params.id
+    const userId = req.params.id;
 
+    // Add basic validation if needed (e.g., check if userId is a valid format)
+    if (!userId /* || !isValidObjectId(userId) */) {
+      // You might need a helper like isValidObjectId from mongoose
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid User ID format" });
+    }
+
+    // 2. Find orders for that user
+    // Consider populating user/product details if needed for the history page,
+    // although maybe less critical than the admin list.
+    const orders = await Order.find({ userId })
+      // .populate(...) // Optional: Add population if needed
+      .sort({ createdAt: -1 });
+
+    // 3. Send ONLY ONE response with the correct structure
+    res.status(200).json({ success: true, orders }); // Send the object format
+  } catch (err) {
+    console.error("Error fetching orders for user:", err); // Log specific error
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch user orders",
+      error: err.message,
+    });
+  }
+});
 module.exports = router;
