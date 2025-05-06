@@ -3,7 +3,7 @@ const router = express.Router();
 const Order = require("../models/orderSchema");
 
 router.post("/", async (req, res) => {
-  const { cartItems, userId } = req.body;
+  const { cartItems, userId, shippingAddress } = req.body;
 
   if (!cartItems || cartItems.length === 0) {
     return res.status(400).json({ message: "Cart is empty" });
@@ -18,6 +18,7 @@ router.post("/", async (req, res) => {
     const order = new Order({
       userId,
       items: cartItems,
+      shippingAddress,
       totalAmount,
     });
 
@@ -32,7 +33,10 @@ router.get("/", async (req, res) => {
   try {
     const orders = await Order.find()
       .populate("userId", "name email") // show user info
-      .populate("items.productId", "name price imageUrls status") // show product info
+      .populate(
+        "items.productId",
+        "name price imageUrls status shippingAddress"
+      ) // show product info
       .sort({ createdAt: -1 }); // latest orders first
 
     res.status(200).json({ success: true, orders });
